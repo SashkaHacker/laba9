@@ -1,52 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
+if __name__ == '__main__':
+    # dct = {input("Класс: "): int(input("Кол-во учеников в классе: "))
+    #        for i in range(int(input('Введите кол-во классов: ')))}
+    dct = {'1а': 28,
+           '1б': 30,
+           '2б': 25,
+           '2а': 29,
+           '2в': 35,
+           '3а': 20,
+           '4а': 50,
+           '4б': 15}
 
-# вариант - 11
+    # а
+    dct['4а'] = 40
 
-if __name__ == "__main__":
-    sample = ['surname', 'name', 'phone', 'date']
-    lst = []
+    # b
+    dct.setdefault('2ж', 23)
 
-    # ввод данных
-    while True:
-        # Запросить команду из терминала.
-        command = input(">>> ").lower()
+    # с
+    dct.pop('4б')
 
-        # Выполнить действие в соответствие с командой.
-        if command == 'exit':
-            break
-
-        elif command == 'add':
-            # Запросить данные о работнике.
-            surname = input('Фамилия: ')
-            name = input("Имя: ")
-            phone = input("Номер телефона: ")
-            date = input('Дата рождения (число:месяц:год): ').split(':')
-
-            # Создать словарь.
-            dct = {'surname': surname,
-                   'name': name,
-                   'phone': phone,
-                   'date': date}
-            lst.append(dct)
-
-            # Сортировка списка словарей
-            lst.sort(key=lambda x:
-            datetime.strptime('-'.join(x['date']), '%d-%m-%Y'))
-            print(lst)
-
-        elif command == 'phone':
-            numbers_phone = input()
-            fl = True
-            for i in lst:
-                if i['phone'] == numbers_phone:
-                    print(f"Фамилия: {i['surname']}\n"
-                          f"Имя: {i['name']}\n"
-                          f"Номер телефона: {i['phone']}\n"
-                          f"Дата рождения: {':'.join(i['date'])}")
-                    fl = False
-                    break
-            if fl:
-                print("Человека с таким номером телефона нет в списке.")
+    print(dct)
+    print(sum(dct.values()))
